@@ -1,17 +1,22 @@
 #ifndef STACK_H
 #define STACK_H
+#define STACK_MAX_SIZE 20
 
-typedef struct stack_elem {
-    int data;
-    struct stack_elem* next;
-} elem;
+#include <stddef.h>
+
+typedef int T;
+typedef struct stack_t {
+    T data[STACK_MAX_SIZE];
+    size_t size;
+} stack;
+
 //операция добавления следующего элемента
-elem* push(elem* top, int data);
+void push(stack* stack, const T value);
 
 //удаление элемента
-elem* pop(elem* top);
+T pop(stack* stack);
 
 //проверка стека на наличие в нем элементов
-int is_empty(elem* top);
+int is_empty(stack* stack);
 
 #endif

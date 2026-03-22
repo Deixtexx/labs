@@ -2,23 +2,17 @@
 #include "stack.h"
 
 int main(void){
-    elem* top = NULL;
+    stack s;
+    s.size = 0;
 
-    //добавляем элементы (числа)
-    top = push(top, 564);
-    top = push(top, 10);
-    top = push(top, 225);
+    //добавляем элементы
+    push(&s, 8);
+    push(&s, 21);
 
-    //напечатаем их (без удаления)
-    const elem* current = top;
-    while (current != NULL){
-        printf("число %d\n", current->data);
-        current = current->next;
-    }
+    //удаляем элементы и выводим их
+    printf("получаем число %d\n", pop(&s));
+    printf("получаем число %d\n", pop(&s));
 
-    //последовательно удалим
-    while(top) top = pop(top);
-
-    //проверим, пуст ли стек
-    if (is_empty) printf("стек не содержит элементов\n");
+    //проверяем, пуст ли стек
+    if(is_empty(&s)) printf("стек пуст\n");
 }

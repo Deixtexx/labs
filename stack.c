@@ -1,21 +1,15 @@
-#include <stdlib.h>
 #include "stack.h"
 
-elem* push(elem* top, int data){
-    elem* ptr = malloc(sizeof(elem));
-    ptr->data = data;
-    ptr->next = top;
+void push(stack* stack, const T value){
+    if (stack->size == STACK_MAX_SIZE) return;
+    stack->data[stack->size++] = value;
 }
 
-elem* pop(elem* top){
-    if (top == NULL) return top;
-
-    elem* ptr_next = top->next;
-    free(top);
-
-    return ptr_next;
+T pop(stack* stack){
+    if (is_empty(stack)) return -1;
+    return stack->data[stack->size--];
 }
 
-int is_empty(elem* top){
-    return top == NULL;
+int is_empty(stack* stack){
+    return stack->size == 0;
 }
