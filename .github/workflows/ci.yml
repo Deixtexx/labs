@@ -1,0 +1,24 @@
+name: CI
+
+# Запускать при пушах и ПР в основную ветку
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      
+      # 1. Проверка форматирования
+      - name: Check formatting
+        run: make format-check
+
+      # 2. Запуск тестов
+      - name: Run tests
+        run: make test
